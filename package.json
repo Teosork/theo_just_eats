@@ -1,0 +1,24 @@
+{
+  "name": "theo_just_eats",
+  "version": "1.0.0",
+  "description": "Small web application that fetches restaurant data from the Just Eat API by UK postcode and displays the first 10 restaurants.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teosork/theo_just_eats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Teosork/theo_just_eats/issues"
+  },
+  "homepage": "https://github.com/Teosork/theo_just_eats#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
