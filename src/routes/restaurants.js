@@ -1,8 +1,9 @@
 const express = require('express');
+const { getRestaurantsByPostcode } = require('../services/justEatApi');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const { postcode } = req.query;
 
     if (!postcode) {
@@ -11,10 +12,14 @@ router.get('/', (req, res) => {
         });
     }
 
-    res.json({
-        message: 'Restaurants route is working',
-        postcode
-    });
+    try {
+        const data = await getRestaurantsByPostcode(postcode);
+        return res.json(data);
+    } catch (error) {
+        return res.status(500).json({
+            error: 'Failed to fetch restaurants'
+        });
+    }
 });
 
 module.exports = router;
