@@ -8,14 +8,33 @@
     
 </head>
 <body>
-    <h1>Theo Just Eats</h1>
-    <form id="postcode-form">
-        <input id="postcode-input" type="text" placeholder="Enter postcode" />
-        <button type="submit">Search</button>
-        <p id="error-message"></p>
-    </form>
-    <div id="results"></div>
+    <header>
+        <nav class="navbar">
+            <img src="/assets/images/theo_eats.png" alt="TJE Logo" class="logo">
+            <h1>Theo Just Eats</h1>
+        </nav>
+    </header>
+    <main>
+        <section class="search-initial_state">
+            <h2>The food you crave, delivered fast.</h2>
+            <p>Find the first 10 restaurants and stores around you:</p>
+        <div class="search-container">
+            <form id="postcode-form" class="search-form">
+                <input
+                    id="postcode-input"
+                    type="search"
+                    placeholder="Enter a UK postcode"
+                    autocomplete="off"
+                    required
+                />
+                <button id="search-bar-btn" type="submit">Search</button>
+            </form>
+             <p id="error-message"></p>
+        </div>
+        </section>
+        <section id="results"></section>
 
+    </main>
     <script src="app.js"></script>
 </body>
 </html>

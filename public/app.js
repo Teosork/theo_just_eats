@@ -3,6 +3,10 @@ const input = document.getElementById('postcode-input');
 const errorMessage = document.getElementById('error-message');
 const results = document.getElementById('results');
 
+input.addEventListener('input', () => {
+    errorMessage.textContent = '';
+});
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -32,7 +36,6 @@ form.addEventListener('submit', async (event) => {
         results.innerHTML = restaurants
         .slice(0, 10)
         .map((restaurant) => `
-            <article>
                 <img
                     src="${restaurant.logo}"
                     alt="${restaurant.name} logo"
@@ -45,7 +48,6 @@ form.addEventListener('submit', async (event) => {
                     : 'Not rated yet'}
                 </p>
                 <p>${restaurant.address || 'N/A'} </p>
-            </article>
         `)
         .join('');
 
