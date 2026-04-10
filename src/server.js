@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')))
+app.use('/utils', express.static(path.join(__dirname, 'utils')));
 
 app.use('/api/restaurants', restaurantsRouter);
 
