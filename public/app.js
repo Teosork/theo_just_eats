@@ -14,8 +14,8 @@ function render() {
 function renderLayout() {
     const isLanding = state.status === "idle" || state.status === "validation-error";
 
-    searchView.classList.toggle("search-initial-state", isLanding);
-    searchView.classList.toggle("search-results-state", !isLanding);
+    searchView.classList.toggle("search-initial_state", isLanding);
+    searchView.classList.toggle("search-results_state", !isLanding);
 }
 
 function renderFeedback() {
@@ -49,7 +49,9 @@ function renderResults() {
     }
 
     if (state.status === "success") {
-        results.innerHTML = `<p>${state.restaurants.length} restaurants found.</p>`;
+        results.innerHTML = state.restaurants
+        .map(renderRestaurantCard)
+        .join("");
     }
 }
 
@@ -77,12 +79,34 @@ function mapRestaurant(restaurant) {
     };
 }
 
+function renderRestaurantCard(restaurant) {
+    return `
+        <div class="restaurant-card">
+            <div class="restaurant-first_row">
+                <h2 class="restaurant-card__name">${restaurant.name}</h2>
+                <img
+                    src="${restaurant.logo}"
+                    alt="${restaurant.name} logo"
+                    class="restaurant-card__logo"
+                />
+            </div>
+            <p class="restaurant-card__cuisines">• ${restaurant.cuisines || "N/A"}</p>
+            <p class="restaurant-card__rating">
+                ${restaurant.rating != null
+                    ? `★ ${restaurant.rating} (${restaurant.ratingCount})`
+                    : "Not rated yet"}
+            </p>
+            <p class="restaurant-card__address">⌖ ${restaurant.address || "N/A"}</p>
+        </div>
+    `;
+}
+
 
 const searchView = document.getElementById("search-view");
 const form = document.getElementById("postcode-form");
 const input = document.getElementById("postcode-input");
 const errorMessage = document.getElementById("error-message");
-const results = document.getElementById("results");
+const results = document.getElementById("restaurants-container");
 
 input.addEventListener('input', () => {
     if (state.status === "validation-error" || state.status === "request-error") {

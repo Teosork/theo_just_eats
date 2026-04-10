@@ -6,10 +6,32 @@
     --color-brand-hover: #d96510;
     --color-text: #2b211d;
     --color-text-muted: #6f625c;
+    --color-border: rgba(42, 23, 19, 0.18);
+    --color-surface-light: rgba(255, 255, 255, 0.92);
+    --color-error: #f12f2f;
 
     /* Box-shadowing */
-    --shadow-sm: 0 2px 6px rgba(43, 33, 29, 0.08);
-    --shadow-md: 0 6px 18px rgba(43, 33, 29, 0.12);
+    --shadow-sm: 0 2px 6px rgba(43, 33, 29, 0.3);
+    --shadow-md: 0 6px 18px rgba(43, 33, 29, 0.5);
+
+    /* Spacing */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    
+    /* Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-pill: 100px;
+
+    /* Font sizes */
+    --font-sm: 0.95rem;
+    --font-md: 1rem;
+    --font-lg: 1.3rem;
+    --font-xl: 2rem;
+    --font-xxl: 2.5rem;
+
 }
 
 * {
@@ -38,59 +60,70 @@ main {
 .navbar {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-2);
     background-color: var(--color-surface-dark);
-    padding: 1rem;
+    padding: var(--space-2);
     box-shadow: var(--shadow-md);
 }
 
 .navbar .logo {
-    width: 4rem;
-    height: 3.5rem;
+    width: 64px;
+    height: 56px;
 }
 
 .navbar h1 {
     color: var(--color-brand);
-    font-size: 2.5rem;
+    font-size: var(--font-xxl);
 }
 
-.search-initial_state {
-    min-height: 80vh;
+.search-initial_state,
+.search-results_state {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: var(--space-4);
 }
 
-.search-initial_state h2 {
+.search-initial_state h2,
+.search-results_state h2 {
     text-align: left;
-    padding: 1rem 0 0.5rem 1rem;
-    font-size: 2rem;
+    padding: var(--space-2) 0 var(--space-1) var(--space-2);
+    font-size: var(--font-xl);
     color: var(--color-text);
 }
 
-.search-initial_state p {
+.search-initial_state p,
+.search-results_state p {
     text-align: left;
-    padding: 0 0 1rem 1rem;
-    font-size: 1rem;
+    padding: 0 0 var(--space-2) var(--space-2);
+    font-size: var(--font-md);
     color: var(--color-text);
 }
 
 .search-initial_state h2,
 .search-initial_state p,
+.search-results_state h2,
+.search-results_state p,
 .search-container {
     width: 100%;
     max-width: 900px;
 }
 
+.search-initial_state {
+    min-height: 80vh;
+    justify-content: center;
+}
+
+.search-results_state {
+    justify-content: flex-start;
+}
 .search-form {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding: var(--space-1);
     border: 1px solid var(--color-border);
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
     background-color: var(--color-surface-dark);
     box-shadow: var(--shadow-sm);
 }
@@ -101,15 +134,15 @@ main {
     outline: none;
     background: transparent;
     color: var(--color-page-bg);
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
+    font-size: var(--font-md);
+    padding: var(--space-2) var(--space-3);
 }
 
 #postcode-input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;
-    height: 1rem;
-    width: 1rem;
+    height: var(--space-2);
+    width: var(--space-2);
     cursor: pointer;
     background-color: var(--color-page-bg);
     -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.41 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71 4.29 4.29l6.3 6.3 6.29-6.3z'/></svg>");
@@ -121,11 +154,11 @@ main {
 
 .search-form button {
     border: none;
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
     background-color: var(--color-brand);
     color: var(--color-page-bg);
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-md);
     font-weight: 600;
     cursor: pointer;
 }
@@ -135,10 +168,112 @@ main {
 }
 
 #error-message {
-    color: #f12f2f;
-    font-size: 0.875rem;
-    height: 1.5rem;
-    padding-left: 1rem;
-    margin-top: 0.5rem;
+    color: var(--color-error);
+    font-size: var(--font-sm);
+    height: var(--space-2);
+    padding-left: var(--space-2);
+    margin-top: var(--space-1);
     overflow: hidden; 
+}
+
+#restaurants-container {
+    width: min(1400px, calc(100% - 4rem));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: var(--space-2);
+    justify-content: center;
+    padding: var(--space-2);
+    margin: 0 auto;
+}
+
+#restaurants-container .restaurant-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    height: 100%;
+    gap: var(--space-1);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+    background-color: var(--color-surface-dark);
+    box-shadow: var(--shadow-md);
+    color: var(--color-brand);
+}
+
+.restaurant-first_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.restaurant-card__name {
+    font-size: var(--font-lg);
+    margin-bottom: var(--space-1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.restaurant-card__logo {
+    width: 65px;
+    height: 65px;
+    background: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+.restaurant-card__cuisines {
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-1);
+    color: var(--color-page-bg);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;   
+}
+
+.restaurant-card__rating {
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-1);
+    color: var(--color-page-bg);
+}
+
+.restaurant-card__address {
+    font-size: var(--font-sm);
+    color: var(--color-page-bg);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;   
+}
+
+@media (max-width: 400px) {
+    .search-initial_state,
+    .search-results_state {
+        padding: var(--space-2);
+    }
+
+    .search-initial_state h2,
+    .search-results_state h2,
+    .search-initial_state p,
+    .search-results_state p,
+    .search-container {
+        max-width: 100%;
+    }
+
+    #restaurants-container {
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: var(--space-2);
+        gap: 0.75rem; 
+    }
+
+    #restaurants-container .restaurant-card {
+        min-height: 200px;
+        padding: 0.875rem;
+    }
+
+    .restaurant-card__name,
+    .restaurant-card__cuisines,
+    .restaurant-card__address {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+    }
 }
