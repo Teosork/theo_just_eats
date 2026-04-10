@@ -1,3 +1,5 @@
+import { formatAddress } from "./formatAddress.js";
+
 export function mapRestaurant(restaurant) {
     return {
         logo: restaurant.logoUrl,
@@ -7,12 +9,6 @@ export function mapRestaurant(restaurant) {
         .join(', '),
         rating: restaurant.rating?.starRating,
         ratingCount: restaurant.rating?.count,
-        address: [
-        restaurant.address?.firstLine,
-        restaurant.address?.city,
-        restaurant.address?.postalCode
-        ]
-        .filter(Boolean)
-        .join(', ')
+        address: formatAddress(restaurant.address)
     };
 }
