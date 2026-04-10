@@ -15,22 +15,22 @@
         </nav>
     </header>
     <main>
-        <section class="search-initial_state">
+        <section id="search-view" class="search-initial_state">
             <h2>The food you crave, delivered fast.</h2>
             <p>Find the first 10 restaurants and stores around you:</p>
-        <div class="search-container">
-            <form id="postcode-form" class="search-form">
-                <input
-                    id="postcode-input"
-                    type="search"
-                    placeholder="Enter a UK postcode"
-                    autocomplete="off"
-                    required
-                />
-                <button id="search-bar-btn" type="submit">Search</button>
-            </form>
-             <p id="error-message"></p>
-        </div>
+            <div class="search-container">
+                <form id="postcode-form" class="search-form">
+                    <input
+                        id="postcode-input"
+                        type="search"
+                        placeholder="Enter a UK postcode"
+                        autocomplete="off"
+                        required
+                    />
+                    <button id="search-bar-btn" type="submit">Search</button>
+                </form>
+                <p id="error-message"></p>
+            </div>
         </section>
         <section id="results"></section>
 
