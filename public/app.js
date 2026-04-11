@@ -66,20 +66,27 @@ function renderRestaurantCard(restaurant) {
     return `
         <div class="restaurant-card">
             <div class="restaurant-first_row">
-                <h2 class="restaurant-card__name">${restaurant.name}</h2>
+                <h2 class="restaurant-card_name">${restaurant.name}</h2>
                 <img
                     src="${restaurant.logo}"
                     alt="${restaurant.name} logo"
-                    class="restaurant-card__logo"
+                    class="restaurant-card_logo"
                 />
             </div>
-            <p class="restaurant-card__cuisines">• ${restaurant.cuisines || "N/A"}</p>
-            <p class="restaurant-card__rating">
-                ${restaurant.rating > 0
-                    ? `★ ${restaurant.rating} (${restaurant.ratingCount})`
-                    : "★ Not rated yet"}
+            <p class="restaurant-card_cuisines">
+              <img src="./assets/images/cuisines.svg" alt="" class="restaurant-card_icon" />
+                ${restaurant.cuisines || "N/A"}
             </p>
-            <p class="restaurant-card__address">⌖ ${restaurant.address || "N/A"}</p>
+            <p class="restaurant-card_rating">
+                <img src="./assets/images/rating.svg" alt="" class="restaurant-card_icon" />
+                ${restaurant.rating > 0
+                    ? ` ${restaurant.rating} (${restaurant.ratingCount})`
+                    : " Not rated yet"}
+            </p>
+            <p class="restaurant-card_address">
+                <img src="./assets/images/location.svg" alt="" class="restaurant-card_icon" />
+                ${restaurant.address || "N/A"}
+            </p>
         </div>
     `;
 }
