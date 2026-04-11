@@ -247,6 +247,27 @@ main {
     flex-shrink: 0;
 }
 
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--color-surface-dark);
+    border-bottom-color: var(--color-brand);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
 @media (max-width: 400px) {
     .search-initial_state,
     .search-results_state {

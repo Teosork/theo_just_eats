@@ -45,7 +45,7 @@ function renderResults() {
     }
 
     if (state.status === "loading") {
-        results.innerHTML = "<p>Loading restaurants...</p>";
+        results.innerHTML = "<span class=loader></span>";
         return;
     }
 
