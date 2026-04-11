@@ -123,6 +123,8 @@ input.addEventListener('input', () => {
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    if (state.status === "loading") return;
+
     const postcode = normalizePostcode(input.value);
 
     if (!postcode) {
@@ -146,7 +148,6 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch
         (`/api/restaurants?postcode=${encodeURIComponent(postcode)}`);
         const data = await response.json();
-        console.log(data);
 
         if (!response.ok) {    
             const status = response.status;
