@@ -84,7 +84,7 @@ function renderRestaurantCard(restaurant) {
                     class="restaurant-card_logo"
                 />
             </div>
-            <p class="restaurant-card_cuisines" title="${restaurant.name || "N/A"} ">
+            <p class="restaurant-card_cuisines" title="${restaurant.cuisines || "N/A"} ">
               <img src="./assets/images/cuisines.svg" alt="" class="restaurant-card_icon" />
                 ${restaurant.cuisines || "N/A"}
             </p>
