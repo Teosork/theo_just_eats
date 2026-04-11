@@ -75,9 +75,9 @@ function renderRestaurantCard(restaurant) {
             </div>
             <p class="restaurant-card__cuisines">• ${restaurant.cuisines || "N/A"}</p>
             <p class="restaurant-card__rating">
-                ${restaurant.rating != null
+                ${restaurant.rating > 0
                     ? `★ ${restaurant.rating} (${restaurant.ratingCount})`
-                    : "Not rated yet"}
+                    : "★ Not rated yet"}
             </p>
             <p class="restaurant-card__address">⌖ ${restaurant.address || "N/A"}</p>
         </div>
