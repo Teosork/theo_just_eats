@@ -50,7 +50,7 @@ function renderResults() {
     }
 
     if (state.status === "request-error") {
-        results.innerHTML = "<p>We could not load restaurants right now.</p>";
+        results.innerHTML = "<p class=failed-loader>We could not load restaurants right now, please try again.</p>";
         return;
     }
 
@@ -109,6 +109,7 @@ const input = document.getElementById("postcode-input");
 const errorMessage = document.getElementById("error-message");
 const results = document.getElementById("restaurants-container");
 const searchButton = form.querySelector('button[type="submit"]');
+
 
 input.addEventListener('input', () => {
     if (state.status === "validation-error" || state.status === "request-error") {
@@ -177,7 +178,7 @@ form.addEventListener('submit', async (event) => {
     } catch (error) {
         setState({
             status: "request-error",
-            errorMessage: "Something went wrong. Please try again.",
+            errorMessage: "",
             restaurants: []
         });
 
