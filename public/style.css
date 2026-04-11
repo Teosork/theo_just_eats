@@ -167,6 +167,11 @@ main {
     background-color: var(--color-brand-hover);
 }
 
+.search-form button:disabled {
+    background-color: var(--color-brand-hover);
+    cursor: not-allowed;
+}
+
 #error-message {
     color: var(--color-error);
     font-size: var(--font-sm);

@@ -10,6 +10,7 @@ const state = {
 
 function render() {
     renderLayout();
+    renderFormState();
     renderFeedback();
     renderResults();
 }
@@ -20,6 +21,14 @@ function renderLayout() {
     searchView.classList.toggle("search-initial_state", isLanding);
     searchView.classList.toggle("search-results_state", !isLanding);
 }
+
+function renderFormState() {
+    const isLoading = state.status === "loading";
+
+    searchButton.disabled = isLoading;
+    searchButton.textContent = isLoading ? "Searching..." : "Search";
+}
+
 
 function renderFeedback() {
     if (state.status === "validation-error" || state.status === "request-error") {
@@ -100,6 +109,7 @@ const form = document.getElementById("postcode-form");
 const input = document.getElementById("postcode-input");
 const errorMessage = document.getElementById("error-message");
 const results = document.getElementById("restaurants-container");
+const searchButton = form.querySelector('button[type="submit"]');
 
 input.addEventListener('input', () => {
     if (state.status === "validation-error" || state.status === "request-error") {
@@ -136,6 +146,7 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch
         (`/api/restaurants?postcode=${encodeURIComponent(postcode)}`);
         const data = await response.json();
+        console.log(data);
 
         if (!response.ok) {    
             const status = response.status;
