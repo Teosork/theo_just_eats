@@ -1,4 +1,5 @@
 import { mapRestaurant } from '/utils/mapRestaurant.js';
+import { normalizePostcode } from '/utils/normalizePostcode.js';
 
 const state = {
     status: "idle",
@@ -110,7 +111,7 @@ input.addEventListener('input', () => {
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const postcode = input.value.trim();
+    const postcode = normalizePostcode(input.value);
 
     if (!postcode) {
         setState({
