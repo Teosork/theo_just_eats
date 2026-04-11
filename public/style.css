@@ -173,6 +173,7 @@ main {
     height: var(--space-2);
     padding-left: var(--space-2);
     margin-top: var(--space-1);
+    font-style: italic;
     overflow: hidden; 
 }
 

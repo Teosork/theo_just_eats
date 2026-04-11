@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
     if (!isValidUkPostcode(postcode)) {
         return res.status(400).json({
-            error: 'Invalid UK postcode format'
+            error: 'Please enter a valid UK postcode (ex. CH1 1AA)'
         });
     }
 
