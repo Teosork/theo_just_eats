@@ -3,7 +3,6 @@ import { normalizePostcode } from '/utils/normalizePostcode.js';
 
 const state = {
     status: "idle",
-    postcode: "",
     errorMessage: "",
     restaurants: []
 };
@@ -130,7 +129,6 @@ form.addEventListener('submit', async (event) => {
     if (!postcode) {
         setState({
             status: "validation-error",
-            postcode: "",
             errorMessage: "Please enter a postcode.",
             restaurants: []
         });
@@ -139,7 +137,6 @@ form.addEventListener('submit', async (event) => {
 
     setState({
         status: "loading",
-        postcode,
         errorMessage: "",
         restaurants: []
     });
@@ -154,7 +151,6 @@ form.addEventListener('submit', async (event) => {
             const message = data.error || "Failed to fetch restaurants.";
             setState({
                 status: status === 400 ? "validation-error" : "request-error",
-                postcode,
                 errorMessage: message,
                 restaurants: []
             });
@@ -167,7 +163,6 @@ form.addEventListener('submit', async (event) => {
         if (restaurants.length === 0) {
             setState({
                 status: "empty",
-                postcode,
                 errorMessage: "",
                 restaurants: []
             });
@@ -176,14 +171,12 @@ form.addEventListener('submit', async (event) => {
           
         setState({
             status: "success",
-            postcode,
             errorMessage: "",
             restaurants
         });
     } catch (error) {
         setState({
             status: "request-error",
-            postcode,
             errorMessage: "Something went wrong. Please try again.",
             restaurants: []
         });
