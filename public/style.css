@@ -227,7 +227,8 @@ main {
     border-radius: var(--radius-sm);
 }
 
-.restaurant-card_cuisines {
+.restaurant-card_cuisines,
+.restaurant-card_address {
     font-size: var(--font-sm);
     color: var(--color-page-bg);
     text-overflow: ellipsis;
@@ -238,22 +239,6 @@ main {
 .restaurant-card_rating {
     font-size: var(--font-sm);
     color: var(--color-page-bg);
-}
-
-.restaurant-card_address {
-    font-size: var(--font-sm);
-    color: var(--color-page-bg);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;   
-}
-
-.restaurant-card_cuisines,
-.restaurant-card_rating,
-.restaurant-card_address {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
 }
 
 .restaurant-card_icon {
