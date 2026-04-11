@@ -222,7 +222,6 @@ main {
 }
 .restaurant-card__cuisines {
     font-size: var(--font-sm);
-    margin-bottom: var(--space-1);
     color: var(--color-page-bg);
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -231,8 +230,8 @@ main {
 
 .restaurant-card__rating {
     font-size: var(--font-sm);
-    margin-bottom: var(--space-1);
     color: var(--color-page-bg);
+    
 }
 
 .restaurant-card__address {
