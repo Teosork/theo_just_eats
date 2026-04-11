@@ -4,7 +4,9 @@
   "description": "Small web application that fetches restaurant data from the Just Eat API by UK postcode and displays the first 10 restaurants.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
   "homepage": "https://github.com/Teosork/theo_just_eats#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.4"
   }
 }
